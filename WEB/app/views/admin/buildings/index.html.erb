@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Budovy</h1>
+<% if @buildings.empty? %>
+  <h3>Ještě nebyly přidány žádné budovy</h3>
+<%else%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Název</th>
+        <th>Kód</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @buildings.each do |building| %>
+        <tr>
+          <td><%= building.title %></td>
+          <td><%= building.code %></td>
+          <td><%= link_to 'Show', [:admin, building] %></td>
+          <td><%= link_to 'Edit', edit_admin_building_path(building) %></td>
+          <td><%= link_to 'Destroy', [:admin, building], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
+<br>
+
+<%= link_to 'Nová budova', new_admin_building_path %> |
+<%= link_to 'Zpět na Dashboard', [:admin, :dashboard] %>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <title>EBC reservation system</title>
+     <%= csrf_meta_tags %>
+
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-default navbar-expand-lg navbar-fixed-top navbar-dark bg-primary">
+    <div class="container">
+      <%= link_to 'EBC Reservations system', buildings_path, { :class => "navbar-brand" } %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <%= link_to 'Seznam budov', root_url, { :class => "nav-link"} %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Kontakt</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Admin', :admin_dashboard, { :class => "nav-link"} %>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <section class="container content-wrap">
+    <%= yield %>
+  </section>
+  <section class="jumbotron">
+      <div class="container">
+        <h2 class="display-5">Skvělý jumbotron!</h2>
+        <p>Je to tu k ničemu, ale dobře vypadá.</p>
+        <p><a class="btn btn-danger btn-lg" href="#">Nezjistit nic víc nefunkčním buttonem</a></p>
+      </div>
+    </section>
+  <footer class="footer">
+      <div class="container">
+        <p>&copy; WEB 2018 - Martin Budínský</p>
+      </div>
+    </footer>
+
+  </body>
+
+</html>

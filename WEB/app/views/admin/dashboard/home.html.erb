@@ -1,0 +1,13 @@
+<section>
+
+
+  <ul>
+    <li><%= link_to 'Spravovat budovy', [:admin, :buildings] %> (<%= Building.all.size %>)</li>
+    <li><%= link_to 'Spravovat místnosti', [:admin, :rooms] %> (<%= Room.all.size %>)</li>
+    <li><%= link_to 'Spravovat lekce', [:admin, :lessons] %> (<%= Lesson.all.size %>)</li>
+    <li><%= link_to 'Spravovat předměty', [:admin, :courses] %> (<%= Course.all.size %>)</li>
+    <li><%= link_to 'Spravovat studenty', [:admin, :students] %> (<%= Student.all.size %>)</li>
+    <li><%= link_to 'Spravovat učitele', [:admin, :teachers] %> (<%= Teacher.all.size %>)</li>
+  </ul>
+
+</section>

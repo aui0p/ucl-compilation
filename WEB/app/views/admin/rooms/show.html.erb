@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Název:</strong>
+  <%= @room.title %>
+</p>
+
+<p>
+  <strong>Kód:</strong>
+  <%= @room.code %>
+</p>
+
+<p>
+  <strong>Budova:</strong>
+  <%= @room.building.title %>
+</p>
+
+<%= link_to 'Upravit', edit_admin_room_path(@room) %> |
+<%= link_to 'Zpět', admin_rooms_path %>

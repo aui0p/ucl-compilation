@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Úvod</li>
+    </ol>
+    <% if @buildings.empty? %>
+      <h3>No buildings added yet.</h3>
+      <p>Please ask the administrator to add some.</p>
+    <% else %>
+      <% @buildings.each do |building| %>
+        <%= link_to({action: :show, id: building}, :class => "col-md-4 card mgn-top col-sm-12") do %>
+        
+          <div class="col-md-4 pull-left inline no-offset">
+            <%= image_tag("building-icon.png", {:class => "img-responsive",:alt => ""})%>
+          </div>
+          <div class="col-md-8 pull-right inline">
+            <h5><%=building.code %><br><small><%=building.title %></small></h5>
+            <p>Lorem ipsum dolor sit amet...</p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>

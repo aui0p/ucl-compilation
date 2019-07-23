@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Předměty</h1>
+<% if @courses.empty? %>
+  <h3>Ještě nebyly přidány žádné předměty</h3>
+<%else%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Název</th>
+      <th>Kód</th>
+      <th>Typ studia</th>
+      <th>Jazyk</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.title %></td>
+        <td><%= course.code %></td>
+        <td><%= course.study_type %></td>
+        <td><%= course.language %></td>
+        <td><%= link_to 'Show', [:admin, course] %></td>
+        <td><%= link_to 'Edit', edit_admin_course_path(course) %></td>
+        <td><%= link_to 'Destroy', [:admin, course], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<br>
+
+<%= link_to 'Nový předmět', new_admin_course_path %> |
+<%= link_to 'Zpět na Dasboard', [:admin, :dashboard] %>

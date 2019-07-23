@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Studenti</h1>
+<% if @students.empty? %>
+  <h3>Nebyli přidáni žádní studenti</h3>
+<%else%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Křestní jméno</th>
+        <th>Příjmení</th>
+        <th>Email</th>
+        <th>Typ studia</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.email %></td>
+          <td><%= student.study_type %></td>
+          <td><%= link_to 'Show', [:admin, student] %></td>
+          <td><%= link_to 'Edit', edit_admin_student_path(student) %></td>
+          <td><%= link_to 'Destroy', [:admin, student], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+
+<%= link_to 'Nový student', new_admin_student_path %> |
+<%= link_to 'Zpět na Dasboard', [:admin, :dashboard] %>

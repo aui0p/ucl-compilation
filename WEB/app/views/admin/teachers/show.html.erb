@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Křestní jméno:</strong>
+  <%= @teacher.first_name %>
+</p>
+
+<p>
+  <strong>Příjmení:</strong>
+  <%= @teacher.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @teacher.email %>
+</p>
+
+<%= link_to 'Upravit', edit_admin_teacher_path(@teacher) %> |
+<%= link_to 'Zpět', admin_teachers_path %>

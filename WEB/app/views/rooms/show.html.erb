@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to 'Seznam budov', buildings_path %></li>
+        <li class="breadcrumb-item"><%= link_to "#{@room.building.code} - #{@room.building.title}", @room.building %></li>
+        <li class="breadcrumb-item active"><%= @room.code %></li>
+    </ol>
+    <h1 class="display-5"><%= @room.code %> - <%= @room.title %><small><%= @room.building.code %> - <%= @room.building.title %></small></h1>
+
+<% lessons_hash = @lessons_by_days %>
+<% if lessons_hash.all? {|_, v| v.empty?} %>
+  <h3>Tento týden nejsou naplánované žádné lekce.</h3>
+<%   else  %>
+  <table class="table table-striped table-bordered table-daily">
+    <thead>
+      <th>Den</th>
+      <th collspan="<%=  %>"></th>
+    </thead>
+    <tbody>
+      <%  Room::DAYS.each do |day|  %>
+    <tr>
+      <td><%=   day  %></td>
+      
+        <% unless lessons_hash[day].empty? %>
+          <%   lessons_hash[day].each do |lesson|   %>
+          <td>
+            <p><%=   lesson.course.code   %></p>
+            <p><%= lesson.teacher.first_name %> <%= lesson.teacher.last_name %></p>
+            <p><%= lesson.start_at.strftime('%H:%M') %> - <%= lesson.end_at.strftime('%H:%M') %></p>
+                  
+      </td>
+          <%   end   %>
+        <%   end   %>
+    </tr>
+      <%  end  %>
+      </tbody>
+  </table>
+<%  end %>
+

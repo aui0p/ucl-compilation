@@ -1,0 +1,14 @@
+<%= simple_form_for([:admin, @student],html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :study_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :magic_submit_button %>
+  </div>
+<% end %>

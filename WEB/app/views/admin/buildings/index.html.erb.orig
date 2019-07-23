@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buildings</h1>
+<% if @buildings.empty? %>
+  <h3>No buildings added yet</h3>
+  <p>Be the first one to do so</p>
+<%else%>
+  <table>
+    <thead>
+      <tr>
+<<<<<<< HEAD
+        <th>Title</th>
+        <th>Code</th>
+        <th colspan="2"></th>
+=======
+        <td><%= building.title %></td>
+        <td><%= building.code %></td>
+        <td><%= link_to 'Show', [:admin, building] %></td>
+        <td><%= link_to 'Edit', edit_admin_building_path(building) %></td>
+        <td><%= link_to 'Destroy', [:admin, building], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> 249d38137ba00e35fafa332c446d9245c9826e16
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @buildings.each do |building| %>
+        <tr>
+          <td><%= building.title %></td>
+          <td><%= building.code %></td>
+          <!--<td><%= link_to 'Show', admin_buildings_path(building) %></td>-->
+          <td><%= link_to 'Edit', edit_admin_building_path(building) %></td>
+          <td><%= link_to 'Destroy', [:admin, building], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
+<br>
+
+<%= link_to 'New Building', new_admin_building_path %>

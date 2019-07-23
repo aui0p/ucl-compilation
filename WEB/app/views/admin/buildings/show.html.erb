@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Název:</strong>
+  <%= @building.title %>
+</p>
+
+<p>
+  <strong>Kód:</strong>
+  <%= @building.code %>
+</p>
+
+<h3>Místnosti:</h3>
+<% @building.rooms.each do |room| %>
+    <p> <%= link_to room.title, [:admin, room] %></p>
+<% end %>
+
+<%= link_to 'Upravit', edit_admin_building_path(@building) %> |
+<%= link_to 'Zpět', admin_buildings_path %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Název:</strong>
+  <%= @course.title %>
+</p>
+
+<p>
+  <strong>Kód:</strong>
+  <%= @course.code %>
+</p>
+
+<p>
+  <strong>Typ studia:</strong>
+  <%= @course.study_type %>
+</p>
+
+<p>
+  <strong>Jazyk:</strong>
+  <%= @course.language %>
+</p>
+
+<p>
+	<strong>Zapsaní studenti:</strong>
+	<br>
+	<% @course.students.each do |student| %>
+		<%= student %> <br>
+	<% end %>
+</p>
+
+<%= link_to 'Upravit', edit_admin_course_path(@course) %> |
+<%= link_to 'Zpět', admin_courses_path %>

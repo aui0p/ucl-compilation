@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Místnosti</h1>
+<% if @rooms.empty? %>
+  <h3>Nebyly přidány žádné místnosti</h3>
+<%else%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Název</th>
+      <th>Kód</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.title %></td>
+        <td><%= room.code %></td>
+        <td><%= link_to 'Show', [:admin, room] %></td>
+        <td><%= link_to 'Edit', edit_admin_room_path(room) %></td>
+        <td><%= link_to 'Destroy', [:admin, room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<br>
+
+<%= link_to 'Nová místnost', new_admin_room_path %> |
+<%= link_to 'Zpět na Dasboard', [:admin, :dashboard] %>

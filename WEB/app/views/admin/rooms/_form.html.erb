@@ -1,0 +1,13 @@
+<%= simple_form_for([:admin, @room], html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :code %>
+    <%= f.association :building %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :magic_submit_button %>
+  </div>
+<% end %>

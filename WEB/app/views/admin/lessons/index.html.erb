@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lekce</h1>
+<% if @lessons.empty? %>
+  <h3>Nebyla přidána žádná lekce</h3>
+<%else%>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Předmět</th>
+        <th>Učitel</th>
+        <th>Datum</th>
+        <th>Začátek</th>
+        <th>Konec</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @lessons.each do |lesson| %>
+        <tr>
+          <td><%= lesson.course.title %></td>
+          <td><%= lesson.teacher %></td>
+          <td><%= lesson.start_at.strftime("%d.%m.%Y") %></td>
+          <td><%= lesson.start_at.strftime("%H:%M") %></td>
+          <td><%= lesson.end_at.strftime("%H:%M") %></td>
+          <td><%= link_to 'Show', [:admin,lesson] %></td>
+          <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
+          <td><%= link_to 'Destroy', [:admin, lesson], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+
+<%= link_to 'Nová lekce', new_admin_lesson_path %> |
+<%= link_to 'Zpět na Dasboard', [:admin, :dashboard] %>

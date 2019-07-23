@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to 'Seznam budov', buildings_path %></li>
+        <li class="breadcrumb-item active"><%= @building.code %> - <%= @building.title %></li>
+    </ol>
+    <h1 class="display-4"><%= @building.code %> - <%= @building.title %></h1>
+    <div class="row">
+      <div class="col-md-7 pull-left">
+        <p>
+        <%= @building.description %>
+        </p>
+      </div>
+      <div class="offset-md-2"></div>
+      <div class="col-md-3 adress-card">
+        <p>Adress1</p>
+        <p>12345 Praha</p>
+      </div>
+    </div>
+
+    <p>
+      <%= link_to({action: :overview}, :class => "btn btn-danger btn-md") do %>
+        <%= image_tag("calendar_ico.png", {:class => "calendar-image", :alt => ""})%>
+        Zobrazit denní rozpis
+      <% end %>
+    </p>
+
+    <p>Pro zobrazení rozvrhu vyberte místnost.</p>
+    <div class="row room-list-container">
+    <div class="col-md-5">
+      <% if @building.rooms.empty? %>
+      <h3>Nebyly přidány žádné místnosti</h3>
+    <% else %>
+        <div class="list-group">
+
+          <% @building.rooms.each do |room| %>
+
+              <%= link_to(room, :class => "list-group-item list-group-item-action") do %>
+              <%= room.code %> <span class="description"><%= room.title %></span> <span class="pull-right show-link">Zobrazit rozvrh</span>
+              <% end %>
+          <% end %>
+
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-7 no-padding-right">
+      <% if has_image_asset?(@building.code) %>
+          <%= image_tag("#{@building.code}.jpg", {:class => "img-responsive", :alt => ""})%>
+        <% else %>
+          <p><strong>Pro budovu <%= @building.code %> není ve složce assets/images žádný obrázek!<br><br>Nahrajte nějaký prosím.</strong></p>
+      <% end %>
+    </div>
+    </div>
