@@ -1,0 +1,1 @@
+int dht_get_hash_index(const char* s, const int dht_num_entries, const int n_collisions);

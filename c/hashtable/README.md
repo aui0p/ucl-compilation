@@ -1,0 +1,1 @@
+### Quick, small and dirty open-addresing, double hashing "dynamic" string hashtable implementation. Used for other uni stuff.
