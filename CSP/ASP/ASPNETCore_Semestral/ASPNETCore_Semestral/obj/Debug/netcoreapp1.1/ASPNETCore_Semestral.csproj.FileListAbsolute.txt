@@ -1,0 +1,9 @@
+C:\Users\Zogg\documents\visual studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\bin\Debug\netcoreapp1.1\ASPNETCore_Semestral.deps.json
+C:\Users\Zogg\documents\visual studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\bin\Debug\netcoreapp1.1\ASPNETCore_Semestral.runtimeconfig.json
+C:\Users\Zogg\documents\visual studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\bin\Debug\netcoreapp1.1\ASPNETCore_Semestral.runtimeconfig.dev.json
+C:\Users\Zogg\documents\visual studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\obj\Debug\netcoreapp1.1\ASPNETCore_Semestral.csprojResolveAssemblyReference.cache
+C:\Users\Zogg\documents\visual studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\obj\Debug\netcoreapp1.1\ASPNETCore_Semestral.AssemblyInfo.cs
+C:\Users\Zogg\Documents\Visual Studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\bin\Debug\netcoreapp1.1\ASPNETCore_Semestral.dll
+C:\Users\Zogg\Documents\Visual Studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\bin\Debug\netcoreapp1.1\ASPNETCore_Semestral.pdb
+C:\Users\Zogg\Documents\Visual Studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\obj\Debug\netcoreapp1.1\ASPNETCore_Semestral.dll
+C:\Users\Zogg\Documents\Visual Studio 2017\Projects\ASPNETCore_Semestral\ASPNETCore_Semestral\obj\Debug\netcoreapp1.1\ASPNETCore_Semestral.pdb

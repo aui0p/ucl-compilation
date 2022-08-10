@@ -1,0 +1,30 @@
+USE [..name..]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Accessories](
+	[AccessoryId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [text] NOT NULL,
+	[CategoryId] [int] NOT NULL,
+	[Amount] [int] NOT NULL,
+	[MinAmount] [int] NOT NULL,
+	[ToBeShown] [bit] NOT NULL,
+ CONSTRAINT [PK_Accessories] PRIMARY KEY CLUSTERED 
+(
+	[AccessoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Accessories]  WITH CHECK ADD  CONSTRAINT [FK_Accessories_Categories] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Categories] ([CategoryId])
+GO
+
+ALTER TABLE [dbo].[Accessories] CHECK CONSTRAINT [FK_Accessories_Categories]
+GO

@@ -1,0 +1,30 @@
+USE [UCL_ASPSEMESTRAL]
+GO
+
+/****** Object:  Table [dbo].[Reservations] ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Reservations](
+	[ReservationId] [int] IDENTITY(1,1) NOT NULL,
+	[ReservationDate] [datetime] NOT NULL,
+	[ReservedFrom] [int] NOT NULL,
+	[ReservedTo] [int] NOT NULL,
+	[CustomerName] [text] NOT NULL,
+	[CustomerSurname] [text] NOT NULL,
+	[CustomerEmail] [text] NOT NULL,
+	[CustomerPhone] [text] NOT NULL,
+	[Note] [text] NULL,
+	[RoomId] [int] NOT NULL,
+ CONSTRAINT [PK_Reservations] PRIMARY KEY CLUSTERED 
+(
+	[ReservationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+

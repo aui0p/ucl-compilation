@@ -1,0 +1,39 @@
+﻿@using ASPNETCore_Semestral.ViewModels
+@using ASPNETCore_Semestral.Controllers
+@using ASPNETCore_Semestral.Model
+<style>
+    .opening-text-div {
+        border: 1px solid black;
+        border-radius:1px;
+        background:grey;
+        color:black;
+        margin-top:20px;
+    }
+        .opening-text-div.activated, .opening-text-div:hover {
+            background:green;
+            cursor:pointer;
+        }
+</style>
+
+@model ReservationTimesViewModel
+
+<div>
+    @{
+            //partial view pro render časů k rezervaci, napojené na svůj ViewModel s listem časů      
+        if (Model.ReservationTimes.Count == 0)
+        {
+            <p class="alert alert-danger">There are no free reservation times for this date!</p>
+        }
+        else
+        {
+
+            @foreach (var item in Model.ReservationTimes)
+            {
+                <div class="opening-text-div col-md-2 col-md-offset-1">
+                   @item
+                </div>
+                
+        }
+        }
+      }
+</div>

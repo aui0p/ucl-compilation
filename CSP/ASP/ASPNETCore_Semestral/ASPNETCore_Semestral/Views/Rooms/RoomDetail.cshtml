@@ -1,0 +1,107 @@
+﻿@using ASPNETCore_Semestral.Model
+@using ASPNETCore_Semestral.Controllers
+@model Room
+<style type="text/css">
+    #hours-placehoder p:hover {
+        cursor:pointer;
+    }
+    #hours-placeholder p.activated {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+    //metody na nastavování obou hiddenů při změnách výběrů data/času
+    function SetTimeHiddenValue() {
+        var selectedTime = document.getElementsByClassName('activated');
+        document.getElementById('SelectedTime').value = selectedTime[0].innerHTML;
+    }
+
+    function SetDateHiddenValue() { 
+        var selectedDate = $("#datepicker").datepicker().val();
+        document.getElementById('SelectedDate').value = selectedDate;
+    }
+</script>
+<script>
+    //nastavení aktivního výběru času k rezervaci
+    $(document).ready(function () {
+        $('#hours-placeholder').on('click',".opening-text-div", function () {
+            $('.opening-text-div').removeClass('activated');
+            $(this).addClass('activated');
+            SetTimeHiddenValue();
+        });
+    });
+</script>
+    
+    <script type="text/javascript">
+        //logika asynchronního načítání PartialView s ViewModelem hodin možných k rezervaci. původně jsem tu měl
+        //kupu JS hnojíku, ale znovupřečtení přednášky mě zavedlo sem
+        $(document).ready(function () {
+            $(function () {
+                var dateToday = new Date();
+                $("#datepicker").datepicker({
+                    minDate: dateToday,
+                    onSelect: function (date, instance) {
+                        var date = $("#datepicker").datepicker().val()
+                        $("#hours-placeholder").empty();
+                        $("#hours-placeholder").load("/Rooms/RoomOpeningsAsync/@Model.RoomId?date=" + date);
+                        SetDateHiddenValue();
+                    }
+                });
+            });
+    });
+</script>
+
+<script>
+    //funkce pro kontrolu vybrání času rezervace
+        $(document).ready(function () {
+            $(function () {
+                $("#reservation-form").on('submit', function (e) {
+                    var isactivated = document.getElementsByClassName('activated');
+                    if (isactivated.length == 0) {
+                        e.preventDefault();
+                        alert("Reservation time must be selected!");
+                    }
+                });
+            });
+        });
+</script>
+@{ 
+//místo pro výpis erorů / úspěchů
+    if (TempData["Message"] != null)
+    { 
+        <p class="alert alert-danger">@TempData["Message"]</p>
+    }
+}
+<h1>Booking for room: @Model.Name</h1>
+<p>Room description: @Model.Description</p>
+@using (Html.BeginForm(method: FormMethod.Post, actionName: "ProcessReservation", controllerName: "Rooms",htmlAttributes: new { id = "reservation-form" }))
+{
+
+    <div>
+        <div class="col-md-6">
+            <h2>Select date and time of reservation:</h2>
+            <input type="text" id="datepicker" class="dateclass">
+        
+        </div>
+        <div class="col-md-6" id="hours-placeholder">
+
+
+        </div>
+    </div>
+    //předávání dat do controlleru pomocí hiddenů
+    @Html.Hidden("SelectedTime")
+    @Html.HiddenFor(r => r.RoomId)
+    @Html.Hidden("SelectedDate")
+    
+    <br />
+
+    <div class="clearfix"></div>
+    <br /><br />
+    <a href="/Rooms" class="btn btn-danger pull-left">Back</a>
+    <input type="submit" class="btn btn-success pull-right" value="Next" />
+
+    <div class="clearfix"></div>
+}
+
+

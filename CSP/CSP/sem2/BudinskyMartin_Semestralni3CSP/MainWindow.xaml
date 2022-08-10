@@ -1,0 +1,41 @@
+﻿<Window x:Class="EntityGarbageWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EntityGarbageWPF"
+        mc:Ignorable="d"
+        Title="EBC Accessories Manager" Height="350" Width="525">
+    <Grid Loaded="Grid_Loaded">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Height="227" Width="392" AutoGenerateColumns="False" ItemsSource="{Binding Accessories}" IsReadOnly="True">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Category}" Header="Category" CanUserResize="False" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="160"/>
+                <DataGridTextColumn Binding="{Binding Amount}" Header="Amount"/>
+                <DataGridTextColumn Binding="{Binding MinAmount}" Header="Min." Width="50"/>
+            </DataGrid.Columns>
+            
+            <!-- Puvodni cerna magie, kterou jsem se snazil vyresit vybarveni radku-->
+            <!--<DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding isEnough}" Value="yes">
+                            <Setter Property="Background" Value="Red"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding isEnough}" Value="no">
+                            <Setter Property="Background" Value="White"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>-->
+
+        </DataGrid>
+        <Button x:Name="newAccessoryButton" Content="New" HorizontalAlignment="Left" Margin="432,36,0,0" VerticalAlignment="Top" Width="75" Click="newAccessoryButton_Click"/>
+        <Button x:Name="updateAccessoryButton" Content="Edit" HorizontalAlignment="Left" Margin="432,63,0,0" VerticalAlignment="Top" Width="75" Click="updateAccessoryButton_Click"/>
+        <Button x:Name="deleteAccessoryButton" Content="Delete" HorizontalAlignment="Left" Margin="432,90,0,0" VerticalAlignment="Top" Width="75" Click="deleteAccessoryButton_Click"/>
+        <Button x:Name="acceptButton" Content="Accept" HorizontalAlignment="Left" Margin="10,277,0,0" VerticalAlignment="Top" Width="75" Click="acceptButton_Click"/>
+        <Button x:Name="handoverButton" Content="Hand Over" HorizontalAlignment="Left" Margin="143,277,0,0" VerticalAlignment="Top" Width="75" Click="handoverButton_Click"/>
+
+    </Grid>
+</Window>

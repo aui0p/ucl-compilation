@@ -1,0 +1,51 @@
+﻿@using ASPNETCore_Semestral.Model
+@using ASPNETCore_Semestral.Controllers
+@model Reservation
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+@{
+    if (TempData["Message"] != null)
+    {
+        <p class="alert alert-danger">@TempData["Message"]</p>
+        //@ViewData["Message"]= null;
+    }
+}
+<h1>Customer details</h1>
+<p>Booking room: @Model.Room.Name</p> 
+<p>on @Model.ReservationDate.Day.@Model.ReservationDate.Month.@Model.ReservationDate.Year @Model.ReservedFrom:00 - @Model.ReservedTo:00</p>
+
+@using (Html.BeginForm(actionName: "CreateReservation", controllerName: "Rooms",method: FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(r => r.CustomerEmail, "Email")
+        @Html.TextBoxFor(r => r.CustomerEmail)
+        @Html.ValidationMessageFor(r=>r.CustomerEmail)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.CustomerName, "First name")
+        @Html.TextBoxFor(r => r.CustomerName)
+        @Html.ValidationMessageFor(r => r.CustomerName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.CustomerSurname, "Last name")
+        @Html.TextBoxFor(r => r.CustomerSurname)
+        @Html.ValidationMessageFor(r => r.CustomerSurname)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.CustomerPhone, "Phone")
+        @Html.TextBoxFor(r => r.CustomerPhone)
+        @Html.ValidationMessageFor(r => r.CustomerPhone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(r => r.Note, "Note")
+        @Html.TextAreaFor(r => r.Note)
+        @Html.ValidationMessageFor(r => r.Note)
+    </div>
+    @Html.HiddenFor(r => r.Room)
+    @Html.HiddenFor(r => r.RoomId)
+    @Html.HiddenFor(r => r.ReservationDate)
+    @Html.HiddenFor(r => r.ReservedFrom)
+    @Html.HiddenFor(r => r.ReservedTo)
+    <input type="submit" class="btn btn-success" value="Create booking" />
+}

@@ -1,0 +1,60 @@
+﻿@using ASPNETCore_Semestral.Model
+@using ASPNETCore_Semestral.Controllers
+@model List<Room>
+<style>
+    .tooltip-div {
+        position: relative;
+        min-height: 150px;
+        border: 1px solid black;
+        padding: 2px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .tooltip-div .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip-div:hover .tooltiptext {
+            visibility: visible;
+        }
+</style>
+@{
+    if (TempData["Message"] != null)
+    {
+        <p class="alert alert-danger">@TempData["Message"]</p>
+        //@ViewData["Message"]= null;
+    }
+}
+<div class="clearfix"></div>
+<div class="row">
+    @foreach (Room room in Model)
+    {
+        <div class="col-md-3 tooltip-div">
+            <h3>@room.Name</h3>
+            @if (room.Description.Length >= 200)
+            {
+                <p>@room.Description.Substring(0, 197)...</p>
+            }
+            else
+            {
+                <p>@room.Description</p>
+            }
+
+            @Html.ActionLink("Book Now!", "RoomDetail", "Rooms", new { id = room.RoomId }, null)
+            <span class="tooltiptext">@room.Description</span>
+        </div>
+
+    }
+    <div class="clearfix"></div>
+</div>
+
+
