@@ -135,5 +135,44 @@ int main(int argc, char** argv)
     // B[i][j] = *(B[i] + j)
     //         = *(*(B + i) + j)
 
+    // AS FUNCTION ARGS
+    // fce(int A[][3]) \\ fce(int (*A)[3])
+    // fce(int A[][3][2]) \\ fce(int (*A)[3][2])
+
+    // DYNAMIC MEMORY
+    // <stdlib.h>
+
+    // size_t = unsigned long
+    // malloc ~= void* malloc(size_t size) 
+    // int *p = (int*)malloc(sizeof(int))
+    // int *p = (int*)malloec(20*sizeof(int))
+    // If malloc fail, it retrurns a NULL pointer
+    // free(p) -> just pass the pointer to the beginning of the data
+
+    // calloc ~= void* calloc(size_t num, size_t size)
+    // int* p = (int*)calloc(3, sizeof(int)) -> array of ints of size 3
+    // calloc initializes the array with 0 (NULL pointers), malloc does not (keeps garbage)
+    
+    // realloc -> for changing the size of previously allocated memory
+    // realloc ~= void* realloc(void* start_ptr, size_t size)
+    // the OS (or allocator) can create an entirely new block of memory if not enough contiguous space is available
+    // and then copy the data into it, then deallocate the old block
+    // int *A = (int*)realloc(A, 0) => free(A)
+    // int *A = (int*)realloc(NULL, n*sizeof(A)) => malloc(A)
+
+    // free ~= free(void* start_ptr)
+    // free -> of every malloc/calloc/realloc comes one free!!
+    // when using with structs, free(struct* ptr) will free all of its members that are not allocated
+    // when using with structs that have dynamically allocated members, we need to free all the members individually
+    // The pointer can be accessed (on some architectures) even after freeing -> maybe set it to NULL pointer also?
+    // On some it will crash with violant memory access error
+
+    // FUNCTION POINTERS
+    // int (*p)(int, int) , void (*p)() , 
+    // Work as callbacks
+    void callback(void (*ptr)(int));
+    // void A(int a, int b) => int *ptr = A stores the pointer to the functions
+    // which is a pointer to the first "instruction" in the function (on the stack)
+
     return 0;
 }
